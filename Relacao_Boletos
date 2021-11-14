@@ -1,0 +1,1306 @@
+unit Boleto;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  ExtCtrls, QuickRpt, Qrctrls, Barcode, clipbrd, Variants, jpeg, StdCtrls,
+  IniFiles ;
+
+type
+  TFBoleto = class(TForm)
+    QRBoleto: TQuickRep;
+    QRBand1: TQRBand;
+    QRLBanco: TQRLabel;
+    QRLabel56: TQRLabel;
+    QRShape45: TQRShape;
+    QRLabel57: TQRLabel;
+    QRLMensagem1: TQRLabel;
+    QRLMensagem2: TQRLabel;
+    QRShape46: TQRShape;
+    QRShape47: TQRShape;
+    QRLabel60: TQRLabel;
+    QRLCedente: TQRLabel;
+    QRShape48: TQRShape;
+    QRLabel62: TQRLabel;
+    QRShape49: TQRShape;
+    QRLabel63: TQRLabel;
+    QRShape50: TQRShape;
+    QRLabel64: TQRLabel;
+    QRShape51: TQRShape;
+    QRLabel65: TQRLabel;
+    QRShape52: TQRShape;
+    QRLabel66: TQRLabel;
+    QRShape53: TQRShape;
+    QRLabel67: TQRLabel;
+    QRShape54: TQRShape;
+    QRLabel68: TQRLabel;
+    QRShape55: TQRShape;
+    QRLabel69: TQRLabel;
+    QRShape56: TQRShape;
+    QRLabel70: TQRLabel;
+    QRShape57: TQRShape;
+    QRLabel71: TQRLabel;
+    QRShape58: TQRShape;
+    QRLabel72: TQRLabel;
+    QRShape59: TQRShape;
+    QRLabel73: TQRLabel;
+    QRLInstrucao: TQRLabel;
+    QRLabel75: TQRLabel;
+    QRShape60: TQRShape;
+    QRImage4: TQRImage;
+    QRLabel76: TQRLabel;
+    QRShape61: TQRShape;
+    QRLabel77: TQRLabel;
+    QRShape62: TQRShape;
+    QRLabel78: TQRLabel;
+    QRShape63: TQRShape;
+    QRLabel79: TQRLabel;
+    QRShape64: TQRShape;
+    QRLabel80: TQRLabel;
+    QRShape65: TQRShape;
+    QRLabel81: TQRLabel;
+    QRShape66: TQRShape;
+    QRShape67: TQRShape;
+    QRLabel82: TQRLabel;
+    QRLabel83: TQRLabel;
+    QRShape68: TQRShape;
+    QRShape69: TQRShape;
+    QRLabel84: TQRLabel;
+    QRLabel85: TQRLabel;
+    QRShape70: TQRShape;
+    QRLabel86: TQRLabel;
+    QRShape71: TQRShape;
+    QRLabel87: TQRLabel;
+    QRShape72: TQRShape;
+    QRShape73: TQRShape;
+    QRImage5: TQRImage;
+    QRLSacadoAvalista: TQRLabel;
+    QRImage6: TQRImage;
+    QRShape74: TQRShape;
+    QRLBanco2: TQRLabel;
+    QRShape75: TQRShape;
+    QRShape76: TQRShape;
+    QRLabel91: TQRLabel;
+    QRLabel95: TQRLabel;
+    QRShape77: TQRShape;
+    QRShape78: TQRShape;
+    QRLabel96: TQRLabel;
+    QRShape79: TQRShape;
+    QRShape80: TQRShape;
+    QRLabel97: TQRLabel;
+    QRShape81: TQRShape;
+    QRLabel98: TQRLabel;
+    QRShape82: TQRShape;
+    QRLabel99: TQRLabel;
+    QRShape83: TQRShape;
+    QRLabel100: TQRLabel;
+    QRShape84: TQRShape;
+    QRLabel101: TQRLabel;
+    QRShape85: TQRShape;
+    QRLabel102: TQRLabel;
+    QRShape86: TQRShape;
+    QRLabel103: TQRLabel;
+    QRShape87: TQRShape;
+    QRShape88: TQRShape;
+    QRLabel104: TQRLabel;
+    QRLabel105: TQRLabel;
+    QRLabel107: TQRLabel;
+    QRLabel108: TQRLabel;
+    QRShape89: TQRShape;
+    QRICodigoBarra: TQRImage;
+    QRLabel1: TQRLabel;
+    QRLAceita: TQRLabel;
+    QRLCarteira: TQRLabel;
+    QRLEspecieMoeda: TQRLabel;
+    QRLQuantidade: TQRLabel;
+    QRLInstrucao2: TQRLabel;
+    QRLInstrucao3: TQRLabel;
+    QRLabel11: TQRLabel;
+    QRLabel12: TQRLabel;
+    QRLabel13: TQRLabel;
+    QRLInstrucao8: TQRLabel;
+    QRLInstrucao4: TQRLabel;
+    QRLInstrucao5: TQRLabel;
+    QRLInstrucao6: TQRLabel;
+    QRLInstrucao7: TQRLabel;
+    QRLAgenciaCodigoCedente: TQRLabel;
+    QRLLinhaDigitavel: TQRLabel;
+    QRLabel25: TQRLabel;
+    QRLabel27: TQRLabel;
+    QRShape1: TQRShape;
+    QRLabel28: TQRLabel;
+    QRShape2: TQRShape;
+    QRLabel29: TQRLabel;
+    QRShape3: TQRShape;
+    QRLabel31: TQRLabel;
+    QRShape4: TQRShape;
+    QRLabel33: TQRLabel;
+    QRShape5: TQRShape;
+    QRShape6: TQRShape;
+    QRLabel34: TQRLabel;
+    QRShape7: TQRShape;
+    QRLabel35: TQRLabel;
+    QRLabel37: TQRLabel;
+    QRShape8: TQRShape;
+    QRShape9: TQRShape;
+    QRLabel39: TQRLabel;
+    QRLabel41: TQRLabel;
+    QRShape10: TQRShape;
+    QRLabel42: TQRLabel;
+    QRShape11: TQRShape;
+    QRShape12: TQRShape;
+    QRLEspecieDocumento: TQRLabel;
+    QRLUsoBanco: TQRLabel;
+    QRLNossoNumero: TQRLabel;
+    QRLDataDocumento: TQRLabel;
+    QRLNumeroDocumento: TQRLabel;
+    QRLDataProcessamento: TQRLabel;
+    QRLValor: TQRLabel;
+    QRLVencimento: TQRLabel;
+    QRLValorDocumento: TQRLabel;
+    QRLDescontoAbatimento: TQRLabel;
+    QRLOutrasDeducoes: TQRLabel;
+    QRLMoraMulta: TQRLabel;
+    QRLValorCobrado: TQRLabel;
+    QRLOutrosAcrescimos: TQRLabel;
+    QRLRazaoNome: TQRLabel;
+    QRLCnpjCpf: TQRLabel;
+    QRLEndereco: TQRLabel;
+    QRLBairro: TQRLabel;
+    QRLCidade: TQRLabel;
+    QRLCep: TQRLabel;
+    QRLVencimento2: TQRLabel;
+    QRLAgenciaCodigoCedente2: TQRLabel;
+    QRLNossoNumero2: TQRLabel;
+    QRLValorDocumento2: TQRLabel;
+    QRLDescontoAbatimento2: TQRLabel;
+    QRLOutrasDeducoes2: TQRLabel;
+    QRLMoraMulta2: TQRLabel;
+    QRLOutrosAcrescimos2: TQRLabel;
+    QRLValorCobrado2: TQRLabel;
+    QRLMensagem12: TQRLabel;
+    QRLMensagem22: TQRLabel;
+    QRLCedente2: TQRLabel;
+    QRLDataDocumento2: TQRLabel;
+    QRLEspecieDocumento2: TQRLabel;
+    QRLAceita2: TQRLabel;
+    QRLDataProcessamento2: TQRLabel;
+    QRLValor2: TQRLabel;
+    QRLQuantidade2: TQRLabel;
+    QRLEspecieMoeda2: TQRLabel;
+    QRLCarteira2: TQRLabel;
+    QRLUsoBanco2: TQRLabel;
+    QRLNumeroDocumento2: TQRLabel;
+    QRLInstrucao1: TQRLabel;
+    QRLInstrucao12: TQRLabel;
+    QRLInstrucao22: TQRLabel;
+    QRLInstrucao32: TQRLabel;
+    QRLInstrucao42: TQRLabel;
+    QRLInstrucao52: TQRLabel;
+    QRLInstrucao62: TQRLabel;
+    QRLInstrucao72: TQRLabel;
+    QRLInstrucao82: TQRLabel;
+    QRLRazaoNome2: TQRLabel;
+    QRLCnpjCpf2: TQRLabel;
+    QRLEndereco2: TQRLabel;
+    QRLBairro2: TQRLabel;
+    QRLCidade2: TQRLabel;
+    QRLCep2: TQRLabel;
+    QRLSacadoAvalista2: TQRLabel;
+    Barcode1: TBarcode;
+    QRLUBanco: TQRLabel;
+    QRLabel2: TQRLabel;
+    QRLabel3: TQRLabel;
+    QRLUBanc1: TQRLabel;
+    QRLabel4: TQRLabel;
+    QRBoletoDeskjet: TQuickRep;
+    QRBand2: TQRBand;
+    QRLabel5: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRShape13: TQRShape;
+    QRLabel7: TQRLabel;
+    QRLabel8: TQRLabel;
+    QRLabel9: TQRLabel;
+    QRShape14: TQRShape;
+    QRShape15: TQRShape;
+    QRLabel10: TQRLabel;
+    QRLabel14: TQRLabel;
+    QRShape16: TQRShape;
+    QRLabel15: TQRLabel;
+    QRShape17: TQRShape;
+    QRLabel16: TQRLabel;
+    QRShape18: TQRShape;
+    QRLabel17: TQRLabel;
+    QRShape19: TQRShape;
+    QRLabel18: TQRLabel;
+    QRShape20: TQRShape;
+    QRLabel19: TQRLabel;
+    QRShape21: TQRShape;
+    QRLabel20: TQRLabel;
+    QRShape22: TQRShape;
+    QRLabel21: TQRLabel;
+    QRShape23: TQRShape;
+    QRLabel22: TQRLabel;
+    QRShape24: TQRShape;
+    QRLabel23: TQRLabel;
+    QRShape25: TQRShape;
+    QRLabel24: TQRLabel;
+    QRShape26: TQRShape;
+    QRLabel26: TQRLabel;
+    QRShape27: TQRShape;
+    QRLabel30: TQRLabel;
+    QRLabel32: TQRLabel;
+    QRLabel36: TQRLabel;
+    QRShape28: TQRShape;
+    QRImage1: TQRImage;
+    QRLabel38: TQRLabel;
+    QRShape29: TQRShape;
+    QRLabel40: TQRLabel;
+    QRShape30: TQRShape;
+    QRLabel43: TQRLabel;
+    QRShape31: TQRShape;
+    QRLabel44: TQRLabel;
+    QRShape32: TQRShape;
+    QRLabel45: TQRLabel;
+    QRShape33: TQRShape;
+    QRLabel46: TQRLabel;
+    QRShape34: TQRShape;
+    QRShape35: TQRShape;
+    QRLabel47: TQRLabel;
+    QRLabel48: TQRLabel;
+    QRShape36: TQRShape;
+    QRShape37: TQRShape;
+    QRLabel49: TQRLabel;
+    QRLabel50: TQRLabel;
+    QRShape38: TQRShape;
+    QRLabel51: TQRLabel;
+    QRShape39: TQRShape;
+    QRLabel52: TQRLabel;
+    QRShape40: TQRShape;
+    QRShape41: TQRShape;
+    QRImage2: TQRImage;
+    QRLabel53: TQRLabel;
+    QRImage3: TQRImage;
+    QRShape42: TQRShape;
+    QRLabel54: TQRLabel;
+    QRShape43: TQRShape;
+    QRShape44: TQRShape;
+    QRLabel55: TQRLabel;
+    QRLabel58: TQRLabel;
+    QRShape90: TQRShape;
+    QRShape91: TQRShape;
+    QRLabel59: TQRLabel;
+    QRShape92: TQRShape;
+    QRShape93: TQRShape;
+    QRLabel61: TQRLabel;
+    QRShape94: TQRShape;
+    QRLabel74: TQRLabel;
+    QRShape95: TQRShape;
+    QRLabel88: TQRLabel;
+    QRShape96: TQRShape;
+    QRLabel89: TQRLabel;
+    QRShape97: TQRShape;
+    QRLabel90: TQRLabel;
+    QRShape98: TQRShape;
+    QRLabel92: TQRLabel;
+    QRShape99: TQRShape;
+    QRLabel93: TQRLabel;
+    QRShape100: TQRShape;
+    QRShape101: TQRShape;
+    QRLabel94: TQRLabel;
+    QRLabel106: TQRLabel;
+    QRLabel109: TQRLabel;
+    QRLabel110: TQRLabel;
+    QRShape102: TQRShape;
+    QRImage7: TQRImage;
+    QRLabel111: TQRLabel;
+    QRLabel112: TQRLabel;
+    QRLabel113: TQRLabel;
+    QRLabel114: TQRLabel;
+    QRLabel115: TQRLabel;
+    QRLabel116: TQRLabel;
+    QRLabel117: TQRLabel;
+    QRLabel118: TQRLabel;
+    QRLabel119: TQRLabel;
+    QRLabel120: TQRLabel;
+    QRLabel121: TQRLabel;
+    QRLabel122: TQRLabel;
+    QRLabel123: TQRLabel;
+    QRLabel124: TQRLabel;
+    QRLabel125: TQRLabel;
+    QRLabel126: TQRLabel;
+    QRLabel127: TQRLabel;
+    QRLabel128: TQRLabel;
+    QRLabel129: TQRLabel;
+    QRShape103: TQRShape;
+    QRLabel130: TQRLabel;
+    QRShape104: TQRShape;
+    QRLabel131: TQRLabel;
+    QRShape105: TQRShape;
+    QRLabel132: TQRLabel;
+    QRShape106: TQRShape;
+    QRLabel133: TQRLabel;
+    QRShape107: TQRShape;
+    QRShape108: TQRShape;
+    QRLabel134: TQRLabel;
+    QRShape109: TQRShape;
+    QRLabel135: TQRLabel;
+    QRLabel136: TQRLabel;
+    QRShape110: TQRShape;
+    QRShape111: TQRShape;
+    QRLabel137: TQRLabel;
+    QRLabel138: TQRLabel;
+    QRShape112: TQRShape;
+    QRLabel139: TQRLabel;
+    QRShape113: TQRShape;
+    QRShape114: TQRShape;
+    QRLabel140: TQRLabel;
+    QRLabel141: TQRLabel;
+    QRLabel142: TQRLabel;
+    QRLabel143: TQRLabel;
+    QRLabel144: TQRLabel;
+    QRLabel145: TQRLabel;
+    QRLabel146: TQRLabel;
+    QRLabel147: TQRLabel;
+    QRLabel148: TQRLabel;
+    QRLabel149: TQRLabel;
+    QRLabel150: TQRLabel;
+    QRLabel151: TQRLabel;
+    QRLabel152: TQRLabel;
+    QRLabel153: TQRLabel;
+    QRLabel154: TQRLabel;
+    QRLabel155: TQRLabel;
+    QRLabel156: TQRLabel;
+    QRLabel157: TQRLabel;
+    QRLabel158: TQRLabel;
+    QRLabel159: TQRLabel;
+    QRLabel160: TQRLabel;
+    QRLabel161: TQRLabel;
+    QRLabel162: TQRLabel;
+    QRLabel163: TQRLabel;
+    QRLabel164: TQRLabel;
+    QRLabel165: TQRLabel;
+    QRLabel166: TQRLabel;
+    QRLabel167: TQRLabel;
+    QRLabel168: TQRLabel;
+    QRLabel169: TQRLabel;
+    QRLabel170: TQRLabel;
+    QRLabel171: TQRLabel;
+    QRLabel172: TQRLabel;
+    QRLabel173: TQRLabel;
+    QRLabel174: TQRLabel;
+    QRLabel175: TQRLabel;
+    QRLabel176: TQRLabel;
+    QRLabel177: TQRLabel;
+    QRLabel178: TQRLabel;
+    QRLabel179: TQRLabel;
+    QRLabel180: TQRLabel;
+    QRLabel181: TQRLabel;
+    QRLabel182: TQRLabel;
+    QRLabel183: TQRLabel;
+    QRLabel184: TQRLabel;
+    QRLabel185: TQRLabel;
+    QRLabel186: TQRLabel;
+    QRLabel187: TQRLabel;
+    QRLabel188: TQRLabel;
+    QRLabel189: TQRLabel;
+    QRLabel190: TQRLabel;
+    QRLabel191: TQRLabel;
+    QRLabel192: TQRLabel;
+    QRLabel193: TQRLabel;
+    QRLabel194: TQRLabel;
+    QRLabel195: TQRLabel;
+    QRLabel196: TQRLabel;
+    QRLabel197: TQRLabel;
+    QRLabel198: TQRLabel;
+    QRLabel199: TQRLabel;
+    QRLabel200: TQRLabel;
+    QRLabel201: TQRLabel;
+    QRLabel202: TQRLabel;
+    QRLabel203: TQRLabel;
+    QRParcela1: TQRLabel;
+    QRLabel205: TQRLabel;
+    QRParcela2: TQRLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+Function L_Digitavel( CodBarra : String ): String ;
+
+Procedure Ler_Ini(cDirExe:String; cDirLogo:String; cTipoPrint:String);
+Procedure Salvar_Ini(DirExe:String; DirLogo:String; TipoPrint:String);
+
+var FBoleto: TFBoleto;
+
+implementation
+
+{$R *.DFM}
+
+procedure TFBoleto.FormCreate(Sender: TObject);
+var cTexto, cCodigoBarra, cArquivo,
+    cArqBol, cLogoBanco, cTipPrint, cVisualizarBol : string;
+    cArqBoleto : TextFile;
+    oK , oKk   : Boolean;
+    nContArq , nTam  : integer;
+    cArqDel : Pchar;
+    ArqIni : TIniFile;
+    Ano, Mes, Dia : Word;
+    dTrava : Tdatetime;
+begin
+   oK := True ;
+   oKk := True;
+//   Ler_Ini(cDirExe, cDirLogo, cTipoPrint);
+
+//   ArqIni := TIniFile.Create('D:\Siscom\boleto\boletos.ini');
+
+   ArqIni := TIniFile.Create('X:\boleto\boletos.ini');
+   try
+     // No arquivo   Boletos.ini
+     // DirExe  diretorio onde se encontra o arquivo Boleto.bal
+     // DirLogo diretorio onde se encontra o arquivo de logotipo dos bancos
+     //TipoPrint se  Laser   codigo de Barra imprime no final do papel
+     //TipoPrint se DeskJet  codigo de Barra imprime no meio do papel
+     // VisualizarBol  se sim mostra na tela se não imprime direto
+
+     cArqBol := ArqIni.ReadString('CONFIG','DirExe',cArqBol);
+     cLogoBanco := ArqIni.ReadString('CONFIG','DirLogo',cLogoBanco);
+     cTipPrint := ArqIni.readString('CONFIG','TipoPrint',cTipPrint);
+     cVisualizarBol := ArqIni.readString('CONFIG','VisualizarBol',cVisualizarBol);
+   Finally
+      ArqIni.Free;
+   end;
+
+//   Salvar_Ini(cDirExe, cDirLogo, cTipoPrint);
+
+//  Bloqueio do Sistema
+   DecodeDate(Date , Ano, Mes, Dia);
+   dTrava := StrTodatetime('25/11/2007');
+   if (dTrava < date) then
+      // sistema travado
+      Begin
+//         application.messagebox('Sistema com problemas !!!!!!!','Atenção',MB_OK+MB_ICONInformation);
+
+         cArqDel := pchar( cArqBol );
+         windows.DeleteFile( cArqDel ) ;
+
+         oK := False;
+         oKk := False;
+      end
+   else
+      Begin
+
+         if not fileExists( cArqBol ) then
+            Begin
+               application.messagebox('Arquivo Boleto.bol não encontrado  !!!','Atenção',MB_OK+MB_ICONInformation);
+               oK := False;
+               oKk := False;
+            end
+         else
+            Begin
+               AssignFile( cArqBoleto , cArqBol );
+               Reset( cArqBoleto );
+               if FileSize( cArqBoleto ) = 0 Then // verifica se arquivo vazio
+                  Begin
+                     application.messagebox('Arquivo Boleto.bol esta vazio  !!!','Atenção',MB_OK+MB_ICONInformation);
+                     oK := False ;
+                     oKk := False;
+                  end;
+            end;
+      end;
+
+   while oK  do begin
+     ReadLn( cArqBoleto , cTexto ) ;
+     // laser
+     QRImage4.Stretch := True;
+     QRImage5.Stretch := True;
+     QRImage6.Stretch := True;
+
+     QRImage4.Picture.LoadFromFile('');
+     QRImage5.Picture.LoadFromFile('');
+     QRImage6.Picture.LoadFromFile('');
+
+     QRLabel76.Caption := 'Agência  /  Código cedente';
+     QRLabel96.Caption := 'Agência  /  Código cedente';
+
+     //DeskJet
+     QRImage2.Stretch := True;
+     QRImage1.Stretch := True;
+     QRImage3.Stretch := True;
+
+     QRImage2.Picture.LoadFromFile('');
+     QRImage1.Picture.LoadFromFile('');
+     QRImage3.Picture.LoadFromFile('');
+
+     QRLabel38.Caption := 'Agência  /  Código cedente';
+     QRLabel59.Caption := 'Agência  /  Código cedente';
+
+     nTam := 1;
+ //        (StrToInt(copy(cTexto,nTam,006) ) = 707) or
+//        (StrToInt(copy(cTexto,nTam,006) ) = 633) then    // Bradesco
+     if (StrToInt(copy(cTexto,nTam,006) ) = 237) then    // Bradesco
+        Begin
+           if fileExists( cLogoBanco + 'logo_Bradesco1.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco1.BMP');
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco1.BMP');
+              end;
+
+           if fileExists( cLogoBanco + 'logo_Bradesco2.BMP') then
+              Begin
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco2.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco2.BMP');
+
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco2.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Bradesco2.BMP');
+              end;
+
+           QRLBanco.Caption := '237-2';
+           QRLBanco2.Caption := '237-2';
+           QRLabel5.Caption := '237-2';
+           QRLabel54.Caption := '237-2';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Bradesco';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Bradesco';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Bradesco';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Bradesco';
+        end;
+
+     if (StrToInt( copy(cTexto,nTam,006) ) = 453) then    // Rural
+        Begin
+           if fileExists( cLogoBanco + 'logo_Rural.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Rural.BMP');
+              end;
+
+           QRLBanco.Caption := '453-7';
+           QRLBanco2.Caption := '453-7';
+           QRLabel5.Caption := '453-7';
+           QRLabel54.Caption := '453-7';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Rural';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Rural';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Rural';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Rural';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006)) = 33) then    // Banespa
+        Begin
+           if fileExists( cLogoBanco + 'logo_Banespa.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Banespa.BMP');
+              end;
+
+           QRLBanco.Caption := '033-7';
+           QRLBanco2.Caption := '033-7';
+           QRLabel5.Caption := '033-7';
+           QRLabel54.Caption := '033-7';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banespa';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banespa';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banespa';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banespa';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006)) = 275) or
+        (StrToInt(copy(cTexto,nTam,006)) = 356) then   // Real
+        Begin
+           if fileExists( cLogoBanco + 'logo_Real.BMP') then
+              Begin
+                 QRImage4.Stretch := False;
+                 QRImage5.Stretch := False;
+                 QRImage6.Stretch := False;
+
+                 QRImage1.Stretch := False;
+                 QRImage2.Stretch := False;
+                 QRImage3.Stretch := False;
+
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Real.BMP');
+              end;
+
+              QRLBanco.Caption := '275';
+              QRLBanco2.Caption := '275';
+              QRLabel5.Caption := '275';
+              QRLabel54.Caption := '275';
+
+              if (StrToInt(copy(cTexto,nTam,006)) = 356) then
+                 Begin
+                   QRLBanco.Caption := '356';
+                   QRLBanco2.Caption := '356';
+                   QRLabel5.Caption := '356';
+                   QRLabel54.Caption := '356';
+                 end;
+              QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Real';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006)) = 1) then   // Brasil
+        Begin
+           if fileExists( cLogoBanco + 'logo_Brasil.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Brasil.BMP');
+              end;
+
+           QRLBanco.Caption := '001-9';
+           QRLBanco2.Caption := '001-9';
+           QRLabel5.Caption := '001-9';
+           QRLabel54.Caption := '001-9';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+        end;
+
+//        (StrToInt(copy(cTexto,nTam,006)) = 702) or
+//        (StrToInt(copy(cTexto,nTam,006)) = 224) then   // Santos / Itau
+     if (StrToInt(copy(cTexto,nTam,006)) = 341) then   // Itau
+        Begin
+           if fileExists( cLogoBanco + 'logo_Itau.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Itau.BMP');
+              end;
+
+           QRLBanco.Caption := '341-7';
+           QRLBanco2.Caption := '341-7';
+           QRLabel5.Caption := '341-7';
+           QRLabel54.Caption := '341-7';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Itau';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Itau';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Itau';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Itau';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006)) = 409) then   // Unibanco
+        Begin
+           if fileExists( cLogoBanco + 'logo_Unibanco.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+                 QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Unibanco.BMP');
+              end;
+
+           QRLBanco.Caption := '409-0';
+           QRLBanco2.Caption := '409-0';
+           QRLabel5.Caption := '409-0';
+           QRLabel54.Caption := '409-0';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Unibanco';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Unibanco';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Unibanco';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Unibanco';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006) ) = 104) then    // Caixa Economica Federal
+        Begin
+           if fileExists( cLogoBanco + 'logo_Cef.BMP') then
+              Begin
+                QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+                QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+              end;
+           if fileExists( cLogoBanco + 'logo_Cef.BMP') then
+              Begin
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Cef.BMP');
+              end;
+
+           QRLBanco.Caption := '104-0';
+           QRLBanco2.Caption := '104-0';
+           QRLabel5.Caption := '104-0';
+           QRLabel54.Caption := '104-0';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006) ) = 353) then    // Santander
+        Begin
+           if fileExists( cLogoBanco + 'logo_Sant.BMP') then
+              Begin
+                QRImage4.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+                QRImage1.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+              end;
+           if fileExists( cLogoBanco + 'logo_Sant.BMP') then
+              Begin
+                 QRImage5.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+                 QRImage6.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+                 QRImage2.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+                 QRImage3.Picture.LoadFromFile( cLogoBanco + 'logo_Sant.BMP');
+              end;
+
+           QRLBanco.Caption := '353-0';
+           QRLBanco2.Caption := '353-0';
+           QRLabel5.Caption := '353-0';
+           QRLabel54.Caption := '353-0';
+
+           QRLabel76.Caption := '    PV       /  Código cedente';
+           QRLabel96.Caption := '    PV       /  Código cedente';
+           QRLabel38.Caption := '    PV       /  Código cedente';
+           QRLabel59.Caption := '    PV       /  Código cedente';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Santander';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Santander';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Santander';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Santander';
+        end;
+
+     if (StrToInt(copy(cTexto,nTam,006)) = 479) then   // Bank Boston
+        Begin
+           if fileExists('X:\logos\logo_Boston.BMP') then
+              Begin
+                 QRImage4.Picture.LoadFromFile(cLogoBanco + 'logo_Boston.BMP');
+                 QRImage5.Picture.LoadFromFile(cLogoBanco + 'logo_Boston.BMP');
+                 QRImage6.Picture.LoadFromFile(cLogoBanco + 'logo_Boston.BMP');
+              end;
+
+           QRLBanco.Caption := '479-0';
+           QRLBanco2.Caption := '479-0';
+
+           QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Bank Boston';
+           QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Bank Boston';
+           QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Bank Boston';
+           QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Bank Boston';
+        end;
+
+     nTam := nTam + 6;
+     QRLMensagem1.Caption := trim(copy(cTexto,nTam,100));
+     QRLMensagem12.Caption := trim(copy(cTexto,nTam,100));
+     QRLabel167.Caption  := trim(copy(cTexto,nTam,100));
+     QRLabel8.Caption := trim(copy(cTexto,nTam,100));
+
+     if (trim(copy(cTexto,nTam,100)) = '') then
+        Begin
+          QRLMensagem1.Caption  := 'Até o Vencimento Pagável em qualquer Banco';
+          QRLMensagem12.Caption := 'Até o Vencimento Pagável em qualquer Banco';
+          QRLabel167.Caption  := 'Até o Vencimento Pagável em qualquer Banco';
+          QRLabel8.Caption := 'Até o Vencimento Pagável em qualquer Banco';
+        end;
+
+     nTam := nTam + 100;
+     QRLMensagem2.Caption := trim(copy(cTexto,nTam,100));
+     QRLMensagem22.Caption := trim(copy(cTexto,nTam,100));
+     if (trim(copy(cTexto,107,100)) = '') then
+        Begin
+           if (StrToInt(copy(cTexto,nTam,006) ) = 237) then    // Bradesco
+              Begin
+                QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Bradesco';
+                QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Bradesco';
+                QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Bradesco';
+                QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Bradesco';
+              end;
+           if (StrToInt( copy(cTexto,nTam,006) ) = 453) then    // Rural
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Rural';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Rural';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Rural';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Rural';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006)) = 33) then    // Banespa
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banespa';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banespa';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banespa';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banespa';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006)) = 275) or
+              (StrToInt(copy(cTexto,nTam,006)) = 356) then   // Real
+             Begin
+              QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Real';
+              QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Real';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006)) = 1) then   // Brasil
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco do Brasil';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006)) = 341) then   // Itau
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Itau';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Itau';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Itau';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Itau';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006)) = 409) then   // Unibanco
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Unibanco';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Unibanco';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Unibanco';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Unibanco';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006) ) = 104) then    // Caixa Economica Federal
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências da Caixa Economico Federal';
+             end;
+           if (StrToInt(copy(cTexto,nTam,006) ) = 353) then    // Santander
+             Begin
+               QRLMensagem2.Caption  := 'Após o mesmo, apenas nas Agências do Banco Santander';
+               QRLMensagem22.Caption := 'Após o mesmo, apenas nas Agências do Banco Santander';
+               QRLabel168.Caption  := 'Após o mesmo, apenas nas Agências do Banco Santander';
+               QRLabel9.Caption := 'Após o mesmo, apenas nas Agências do Banco Santander';
+             end;
+        end;
+
+     nTam := nTam + 100;
+     QRLCedente.Caption := trim(copy(cTexto,nTam,060));
+     QRLCedente2.Caption := trim(copy(cTexto,nTam,060));
+     QRLabel14.Caption := trim(copy(cTexto,nTam,060));
+     QRLabel169.Caption := trim(copy(cTexto,nTam,060));
+
+     nTam := nTam + 60;
+     QRLDataDocumento.Caption := trim(copy(cTexto,nTam,010));
+     QRLDataDocumento2.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel143.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel170.Caption := trim(copy(cTexto,nTam,010));
+
+     nTam := nTam + 10;
+     QRLNumeroDocumento.Caption := trim(copy(cTexto,nTam,008));
+     QRLNumeroDocumento2.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel201.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel179.Caption := trim(copy(cTexto,nTam,008));
+
+     nTam := nTam + 8;
+     QRLEspecieDocumento.Caption := trim(copy(cTexto,nTam,010));
+     QRLEspecieDocumento2.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel140.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel171.Caption := trim(copy(cTexto,nTam,010));
+
+     nTam := nTam + 10;
+     QRLAceita.Caption := trim(copy(cTexto,nTam,006));
+     QRLAceita2.Caption := trim(copy(cTexto,nTam,006));
+     QRLabel112.Caption := trim(copy(cTexto,nTam,006));
+     QRLabel172.Caption := trim(copy(cTexto,nTam,006));
+
+     nTam := nTam + 6;
+     QRLDataProcessamento.Caption := trim(copy(cTexto,nTam,010));
+     QRLDataProcessamento2.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel144.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel173.Caption := trim(copy(cTexto,nTam,010));
+
+     nTam := nTam + 10;
+     QRLUsoBanco.Caption := trim(copy(cTexto,nTam,012));
+     QRLUsoBanco2.Caption := trim(copy(cTexto,nTam,012));
+     QRLabel141.Caption := trim(copy(cTexto,nTam,012));
+     QRLabel178.Caption := trim(copy(cTexto,nTam,012));
+
+     nTam := nTam + 12;
+     QRLCarteira.Caption := trim(copy(cTexto,nTam,004));
+     QRLCarteira2.Caption := trim(copy(cTexto,nTam,004));
+     QRLabel113.Caption := trim(copy(cTexto,nTam,004));
+     QRLabel177.Caption := trim(copy(cTexto,nTam,004));
+
+     nTam := nTam + 4;
+     QRLEspecieMoeda.Caption := trim(copy(cTexto,nTam,008));
+     QRLEspecieMoeda2.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel114.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel176.Caption := trim(copy(cTexto,nTam,008));
+
+     nTam := nTam + 8;
+     QRLQuantidade.Caption := trim(copy(cTexto,nTam,014));
+     QRLQuantidade2.Caption := trim(copy(cTexto,nTam,014));
+     QRLabel115.Caption := trim(copy(cTexto,nTam,014));
+     QRLabel175.Caption := trim(copy(cTexto,nTam,014));
+
+     nTam := nTam + 14;
+     QRLValor.Caption := trim(copy(cTexto,nTam,018));
+     QRLValor2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel145.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel174.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLInstrucao1.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao12.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel180.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel181.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao2.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao22.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel116.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel182.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao3.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao32.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel117.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel183.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao4.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao42.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel122.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel184.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao5.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao52.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel123.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel185.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao6.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao62.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel124.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel186.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao7.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao72.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel125.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel187.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLInstrucao8.Caption := trim(copy(cTexto,nTam,074));
+     QRLInstrucao82.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel121.Caption := trim(copy(cTexto,nTam,074));
+     QRLabel188.Caption := trim(copy(cTexto,nTam,074));
+
+     nTam := nTam + 74;
+     QRLVencimento.Caption := trim(copy(cTexto,nTam,010));
+     QRLVencimento2.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel146.Caption := trim(copy(cTexto,nTam,010));
+     QRLabel158.Caption := trim(copy(cTexto,nTam,010));
+
+     nTam := nTam + 10;
+     QRLAgenciaCodigoCedente.Caption := trim(copy(cTexto,nTam,025));
+     QRLAgenciaCodigoCedente2.Caption := trim(copy(cTexto,nTam,025));
+     QRLabel126.Caption := trim(copy(cTexto,nTam,025));
+     QRLabel159.Caption := trim(copy(cTexto,nTam,025));
+
+     nTam := nTam + 25;
+     QRLNossoNumero.Caption := trim(copy(cTexto,nTam,018));
+     QRLNossoNumero2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel142.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel160.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLValorDocumento.Caption := trim(copy(cTexto,nTam,018));
+     QRLValorDocumento2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel202.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel161.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLDescontoAbatimento.Caption := trim(copy(cTexto,nTam,018));
+     QRLDescontoAbatimento2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel147.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel162.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLOutrasDeducoes.Caption := trim(copy(cTexto,nTam,018));
+     QRLOutrasDeducoes2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel148.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel163.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLMoraMulta.Caption := trim(copy(cTexto,nTam,018));
+     QRLMoraMulta2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel149.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel164.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLOutrosAcrescimos.Caption := trim(copy(cTexto,nTam,018));
+     QRLOutrosAcrescimos2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel151.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel165.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLValorCobrado.Caption := trim(copy(cTexto,nTam,018));
+     QRLValorCobrado2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel150.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel166.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLRazaoNome.Caption := trim(copy(cTexto,nTam,065));
+     QRLRazaoNome2.Caption := trim(copy(cTexto,nTam,065));
+     QRLabel152.Caption := trim(copy(cTexto,nTam,065));
+     QRLabel189.Caption := trim(copy(cTexto,nTam,065));
+
+     nTam := nTam + 65;
+     QRLCnpjCpf.Caption := trim(copy(cTexto,nTam,018));
+     QRLCnpjCpf2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel153.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel190.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLEndereco.Caption := trim(copy(cTexto,nTam,045));
+     QRLEndereco2.Caption := trim(copy(cTexto,nTam,045));
+     QRLabel154.Caption := trim(copy(cTexto,nTam,045));
+     QRLabel191.Caption := trim(copy(cTexto,nTam,045));
+
+     nTam := nTam + 45;
+     QRLBairro.Caption := trim(copy(cTexto,nTam,020));
+     QRLBairro2.Caption := trim(copy(cTexto,nTam,020));
+     QRLabel155.Caption := trim(copy(cTexto,nTam,020));
+     QRLabel192.Caption := trim(copy(cTexto,nTam,020));
+
+     nTam := nTam + 20;
+     QRLCidade.Caption := trim(copy(cTexto,nTam,018));
+     QRLCidade2.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel156.Caption := trim(copy(cTexto,nTam,018));
+     QRLabel193.Caption := trim(copy(cTexto,nTam,018));
+
+     nTam := nTam + 18;
+     QRLCep.Caption := trim(copy(cTexto,nTam,008));
+     QRLCep2.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel157.Caption := trim(copy(cTexto,nTam,008));
+     QRLabel194.Caption := trim(copy(cTexto,nTam,008));
+
+     nTam := nTam + 8;
+     QRLSacadoAvalista.Caption := trim(copy(cTexto,nTam,060));
+     QRLSacadoAvalista2.Caption := trim(copy(cTexto,nTam,060));
+     QRLabel53.Caption := trim(copy(cTexto,nTam,060));
+     QRLabel195.Caption := trim(copy(cTexto,nTam,060));
+
+     QRLUBanc1.Caption := ' ';
+     QRLUBanco.Caption := ' ';
+     QRLabel199.Caption := ' ';
+     QRLabel196.Caption := ' ';
+
+
+{     if (StrToInt(copy(cTexto,1,006)) = 409) then   // Unibanco
+        Begin
+          QRLSacadoAvalista.Caption := ' ';
+          QRLSacadoAvalista2.Caption := ' ';
+          QRLabel53.Caption := ' ';
+          QRLabe195.Caption := ' ';
+
+          QRLUBanc1.Caption := trim(copy(cTexto,nTam,060));
+          QRLUBanco.Caption := trim(copy(cTexto,nTam,060));
+          QRLabel199.Caption := trim(copy(cTexto,nTam,060));
+          QRLabel196.Caption := trim(copy(cTexto,nTam,060));
+        end;
+}
+     nTam := nTam + 60;
+     cCodigoBarra    := trim(copy(cTexto,nTam,054));
+     QRLabel4.Caption := ' '; //cCodigoBarra;
+     QRLabel200.Caption := ' '; //cCodigoBarra;
+
+     nTam := nTam + 54;
+     QRParcela1.Caption := trim(copy(cTexto,nTam,002));
+     QRParcela2.Caption := trim(copy(cTexto,nTam,002));
+     QRLabel203.Caption := trim(copy(cTexto,nTam,002));
+     QRLabel205.Caption := trim(copy(cTexto,nTam,002));
+
+     // Gera linha digitavel atraves do codigo de barra//
+     QRLLinhaDigitavel.Caption := L_Digitavel(cCodigoBarra) ;
+     QRLabel127.Caption := L_Digitavel(cCodigoBarra) ;
+
+     Barcode1.Digits := cCodigoBarra;
+     Barcode1.BarcodeCopy;
+     if cTipPrint = 'Laser' then  //  codigo de Barra no final do papel
+        Begin
+          QRICodigoBarra.Picture.Assign(Clipboard);
+          if (cVisualizarBol = 'Sim') then
+             QRBoleto.Preview
+          else
+             QRBoleto.Print;
+
+          QRBoleto.Destroy;
+        end
+     else   // DeskJet    codigo de barra no meio do papel
+        Begin
+          QRImage7.Picture.Assign(Clipboard);
+          if (cVisualizarBol = 'Sim') then
+             QRBoletoDeskjet.Preview
+          else
+             QRBoletoDeskjet.Print;
+
+          QRBoletoDeskjet.Destroy;
+        end;
+
+     if Eof(cArqBoleto) then
+        oK := False;
+   end;
+   if oKk then
+      Begin
+        CloseFile( cArqBoleto ) ;
+
+        nContArq := 0;
+        oK := True;
+        While oK do Begin
+          nContArq := nContArq + 1 ;
+          cArquivo := copy( cArqBol , 1 , Length(cArqBol)-1) + IntToStr(nContArq);
+
+          if not fileExists(cArquivo) then
+             Begin
+               RenameFile( cArqBol ,cArquivo );
+               oK := False;
+             end;
+        end;
+
+        if (nContArq = 1) then
+           Begin
+             cArqDel := pchar(copy( cArqBol , 1 , Length(cArqBol)-1) + '2');
+             windows.DeleteFile( cArqDel ) ;
+           end
+        else
+           Begin
+             cArqDel := pchar(copy( cArqBol , 1 , Length(cArqBol)-1) + '1');
+             windows.DeleteFile( cArqDel );
+           end;
+      end;
+   application.terminate;
+
+end;
+
+function L_Digitavel( CodBarra : String ): String ;
+var  Laco, Soma,Soma1, Digito, Multiplicador : Integer;
+var  PrimeiroCodigo, SegundoCodigo,TerceiroCodigo,
+     QuartoCodigo,QuintoCodigo: string;
+begin
+  PrimeiroCodigo := copy(CodBarra,1,4)+Copy(CodBarra,20,5);
+  Soma := 0;
+  Multiplicador := 2;
+  for Laco := 1 to length(PrimeiroCodigo) do begin
+      Soma1 := ( StrToInt(copy(PrimeiroCodigo,(length(PrimeiroCodigo)+1)-Laco,1))* Multiplicador );
+
+      if Soma1 > 9 then
+         Soma1 := StrToInt(Copy(IntToStr(Soma1),1,1)) + StrToInt(Copy(IntToStr(Soma1),2,1));
+
+      Soma := Soma + Soma1;
+      Multiplicador := Multiplicador - 1;
+
+      if Multiplicador = 0 then
+         Multiplicador := 2;
+  end;
+  Digito := Soma mod 10;
+  if Digito = 0 then
+     Digito := 0
+  else
+     Digito := 10 - Digito;
+  PrimeiroCodigo := PrimeiroCodigo+IntToStr(Digito);
+
+  SegundoCodigo  := copy(CodBarra,25,10);
+  Soma := 0;
+  Multiplicador := 2;
+  for Laco := 1 to length(SegundoCodigo) do begin
+      Soma1 := ( StrToInt(copy(SegundoCodigo,(length(SegundoCodigo)+1)-Laco,1))* Multiplicador );
+
+      if Soma1 > 9 then
+         Soma1 := StrToInt(Copy(IntToStr(Soma1),1,1)) + StrToInt(Copy(IntToStr(Soma1),2,1));
+
+      Soma := Soma + Soma1;
+      Multiplicador := Multiplicador - 1;
+
+      if Multiplicador = 0 then
+         Multiplicador := 2;
+  end;
+  Digito := Soma mod 10;
+  if Digito = 0 then
+     Digito := 0
+  else
+     Digito := 10 - Digito;
+  SegundoCodigo := SegundoCodigo+IntToStr(Digito);
+
+  TerceiroCodigo := Copy(CodBarra,35,10);
+  Soma := 0;
+  Multiplicador := 2;
+  for Laco := 1 to length(TerceiroCodigo) do begin
+      Soma1 := ( StrToInt(copy(TerceiroCodigo,(length(TerceiroCodigo)+1)-Laco,1))* Multiplicador );
+
+      if Soma1 > 9 then
+         Soma1 := StrToInt(Copy(IntToStr(Soma1),1,1)) + StrToInt(Copy(IntToStr(Soma1),2,1));
+
+      Soma := Soma + Soma1;
+      Multiplicador := Multiplicador - 1;
+
+      if Multiplicador = 0 then
+         Multiplicador := 2;
+  end;
+  Digito := Soma mod 10;
+  if Digito = 0 then
+     Digito := 0
+  else
+     Digito := 10 - Digito;
+  TerceiroCodigo := TerceiroCodigo+IntToStr(Digito);
+
+  QuartoCodigo := Copy(CodBarra,5,1);
+  QuintoCodigo := Copy(CodBarra,06,14);
+
+  Result := copy(PrimeiroCodigo,1,5)+'.'+Copy(PrimeiroCodigo,6,5)+'  '+
+            Copy(SegundoCodigo, 1,5)+'.'+Copy(SegundoCodigo, 6,6)+'  '+
+            Copy(TerceiroCodigo,1,5)+'.'+Copy(TerceiroCodigo,6,6)+'  '+
+            QuartoCodigo +'  '+ QuintoCodigo;
+end;
+
+Procedure Salvar_Ini(DirExe :String; DirLogo :String; TipoPrint :String);
+var ArqIni : TIniFile;
+Begin
+// procedure não esta sendo utilizada
+
+   ArqIni := TIniFile.Create('c:\boleto\boletos.ini');
+   try
+     ArqIni.WriteString('CONFIG','DirExe','C:\');
+     ArqIni.WriteString('CONFIG','DirLogo','C:\Boleto');
+     ArqIni.WriteString('CONFIG','TipoPrint','DeskJet');
+   Finally
+      ArqIni.Free;
+   end;
+end;
+
+Procedure Ler_Ini(cDirExe: String ; cDirLogo: String ; cTipoPrint: String);
+var ArqIni : TIniFile;
+Begin
+// procedure não esta sendo utilizada
+
+   ArqIni := TIniFile.Create('c:\boleto\boletos.ini');
+   try
+     cDirExe := ArqIni.ReadString('CONFIG','DirExe',cDirExe);
+     cDirLogo := ArqIni.ReadString('CONFIG','DirLogo',cDirLogo);
+     cTipoPrint := ArqIni.readString('CONFIG','TipoPrint',cTipoPrint);
+   Finally
+      ArqIni.Free;
+   end;
+end;
+
+
+end.
